@@ -17,13 +17,15 @@ The following code shows using DTW on the two serieses **series_1** and **series
 >>> import simpledtw
 >>> series_1 = [1, 2, 3, 2, 1]
 >>> series_2 = [1, 1, 2, 2, 2.5, 3, 2, 1]
->>> matches, mapping_1, mapping_2, matrix = simpledtw.dtw(series_1, series_2)
+>>> matches, cost, mapping_1, mapping_2, matrix = simpledtw.dtw(series_1, series_2)
 >>> matches
 [(0, 0), (0, 1), (1, 2), (1, 3), (1, 4), (2, 5), (3, 6), (4, 7)]
+>>> cost
+0.5
 >>> mapping_1
-[0, 2, 5, 6, 7]
+[[0, 1], [2, 3, 4], [5], [6], [7]]
 >>> mapping_2
-[0, 0, 1, 1, 1, 2, 3, 4]
+[[0], [0], [1], [1], [1], [2], [3], [4]]
 >>> matrix
 array([[ 0. ,  0. ,  1. ,  2. ,  3.5,  5.5,  6.5,  6.5],
        [ 1. ,  1. ,  0. ,  0. ,  0.5,  1.5,  1.5,  2.5],
@@ -43,10 +45,11 @@ The function **simpledtw.dtw()** gets 2 mandatory parameters and 1 optional para
 
 
 
-The function **simpledtw.dtw()** returns 4 outputs:
+The function **simpledtw.dtw()** returns 5 outputs:
 * ***matches*** - A list of tuples, where each tuple's first member is an index from **series_1** and the second member is an index from **series_2**
-* ***mapping_1*** - A list that contains at each index ***i***, the index ***j*** in **series_2**, which index ***i*** in **series_1** has been assigned to
-* ***mapping_2*** - A list that contains at each index ***i***, the index ***j*** in **series_1**, which index ***i*** in **series_2** has been assigned to
+* ***cost*** - The cost of the warping, which is the value of ***matrix[-1,-1]***, i.e. the value at the ***(n,m)*** cell of the Dynamic Programming 2D array
+* ***mapping_1*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_2**, to which index ***i*** in **series_1** has been matched
+* ***mapping_2*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_1**, to which index ***i*** in **series_2** has been matched
 * ***matrix*** - The Dynamic Programming **(nxm)** Numpy matrix, where **n** is the length of **series_1** and **m** is the length of **series_2**, which can be used in order to visualize the computations and the selected path
 
 ## Using Different Norm Functions

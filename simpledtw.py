@@ -13,12 +13,12 @@ def dtw(series_1, series_2, norm_func = np.linalg.norm):
 	i = matrix.shape[0] - 1
 	j = matrix.shape[1] - 1
 	matches = []
-	mappings_series_1 = [None] * matrix.shape[0]
-	mappings_series_2 = [None] * matrix.shape[1]
+	mappings_series_1 = [list() for v in range(matrix.shape[0])]
+	mappings_series_2 = [list() for v in range(matrix.shape[1])]
 	while i > 0 or j > 0:
 		matches.append((i, j))
-		mappings_series_1[i] = j
-		mappings_series_2[j] = i
+		mappings_series_1[i].append(j)
+		mappings_series_2[j].append(i)
 		option_diag = matrix[i - 1, j - 1] if i > 0 and j > 0 else np.inf
 		option_up = matrix[i - 1, j] if i > 0 else np.inf
 		option_left = matrix[i, j - 1] if j > 0 else np.inf
@@ -31,8 +31,12 @@ def dtw(series_1, series_2, norm_func = np.linalg.norm):
 		else:
 			j -= 1
 	matches.append((0, 0))
-	mappings_series_1[0] = 0
-	mappings_series_2[0] = 0
+	mappings_series_1[0].append(0)
+	mappings_series_2[0].append(0)
 	matches.reverse()
+	for mp in mappings_series_1:
+		mp.reverse()
+	for mp in mappings_series_2:
+		mp.reverse()
 	
-	return matches, mappings_series_1, mappings_series_2, matrix
+	return matches, matrix[-1, -1], mappings_series_1, mappings_series_2, matrix
