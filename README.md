@@ -2,6 +2,10 @@
 
 **simpledtw** is a Python Dynamic Programming implementation using NumPy, of the classic Dynamic Time Warping algorithm
 
+## Installation
+The package **simpledtw** is currenetly not registered in PyPi.
+The current way of installing the package is by copying the file **simpledtw.py** into your Python libs directory or into your project directory
+
 ## Dependencies
 The only dependency of **simpledtw** is **NumPy**
 
