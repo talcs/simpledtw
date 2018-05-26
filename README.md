@@ -47,7 +47,7 @@ The function **simpledtw.dtw()** gets 2 mandatory parameters and 1 optional para
 
 The function **simpledtw.dtw()** returns 5 outputs:
 * ***matches*** - A list of tuples, where each tuple's first member is an index from **series_1** and the second member is an index from **series_2**
-* ***cost*** - The cost of the warping, which is the value of ***matrix[-1,-1]***, i.e. the value at the ***(n,m)*** cell of the Dynamic Programming 2D array
+* ***cost*** - The cost of the warping, which is the value at the ***(n,m)*** cell of the Dynamic Programming 2D array
 * ***mapping_1*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_2**, to which index ***i*** in **series_1** has been matched
 * ***mapping_2*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_1**, to which index ***i*** in **series_2** has been matched
 * ***matrix*** - The Dynamic Programming **(nxm)** Numpy matrix, where **n** is the length of **series_1** and **m** is the length of **series_2**, which can be used in order to visualize the computations and the selected path
