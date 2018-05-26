@@ -57,7 +57,7 @@ The function **simpledtw.dtw()** returns 5 outputs:
 In order to use norms that are different from **L2 distance**, which is the default behavior of  **numpy.linalg.norm**, you could use a lambda expression, for example, for L1 distance you could use:
 ```
 >>> norm_func = lambda x : numpy.linalg.norm(x, ord = 1)
->>> matches, mapping_1, mapping_2, matrix = simpledtw.dtw(series_1, series_2, norm_func)
+>>> matches, cost, mapping_1, mapping_2, matrix = simpledtw.dtw(series_1, series_2, norm_func)
 ```
 
 You might want to check NumPy's norm function documentation [here](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html)
