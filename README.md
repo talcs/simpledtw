@@ -43,6 +43,7 @@ The function **simpledtw.dtw()** gets 2 mandatory parameters and 1 optional para
 * ***series_2*** - **MANDATORY** - an iterable object of numbers **or vectors**
 * ***norm_func*** - **OPTIONAL** - a function that computes vector norm or real number absolute value (default is **numpy.linalg.norm**).
 
+* **series_1** and **series_2** must support Python's ***len()*** function. Thus, iterable objects such as lists, tuples and Numpy arrays will work, while **generators will not**.
 
 
 The function **simpledtw.dtw()** returns 5 outputs:
