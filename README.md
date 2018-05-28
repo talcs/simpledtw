@@ -1,6 +1,6 @@
 # simpledtw
 
-**simpledtw** is a Python Dynamic Programming implementation using NumPy, of the classic Dynamic Time Warping algorithm
+**simpledtw** is a Python Dynamic Programming implementation using NumPy, of the classic Dynamic Time Warping algorithm. The library enables computing DTW on sequences of scalars or on sequences of vectors.
 
 ## Installation
 The package **simpledtw** is currenetly not registered in PyPi.
@@ -38,6 +38,9 @@ Here is the visualization of the above example. In blue and orange are the value
 
 
 ![DTW Visualization](/dtw_vis.png)
+
+If for each pair of matched indices, we sum the absolute differences of their values, we get the cost of the whole match, which is identical to the value in the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which makes a cost of **|2.5 - 2| - 0.5**. Hence, the total cost of this example is **0.5**, as also seen in the **(n,m)** index in the matrix.
+
 
 * Although not shown in the example, the values of **series_1** and **series_2** can also be vectors of any dimension
 
