@@ -34,6 +34,9 @@ array([[ 0. ,  0. ,  1. ,  2. ,  3.5,  5.5,  6.5,  6.5],
        [ 4. ,  4. ,  2. ,  2. ,  2.5,  3. ,  1.5,  0.5]])
 ```
 
+Here is the visualization of the above example. In blue and orange are the value serieses. In black are the optimal connections computed by the DTW algorithm:
+![DTW Visualization](/dtw_vis.png)
+
 * Although not shown in the example, the values of **series_1** and **series_2** can also be vectors of any dimension
 
 ## Inputs and outputs
