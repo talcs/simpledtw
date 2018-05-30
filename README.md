@@ -15,23 +15,24 @@ The following code shows using DTW on the two serieses **series_1** and **series
 
 ```
 >>> import simpledtw
->>> series_1 = [1, 2, 3, 2, 1]
+>>> series_1 = [1, 2, 3, 2, 2.13, 1]
 >>> series_2 = [1, 1, 2, 2, 2.5, 3, 2, 1]
 >>> matches, cost, mapping_1, mapping_2, matrix = simpledtw.dtw(series_1, series_2)
 >>> matches
-[(0, 0), (0, 1), (1, 2), (1, 3), (1, 4), (2, 5), (3, 6), (4, 7)]
+[(0, 0), (0, 1), (1, 2), (1, 3), (1, 4), (2, 5), (3, 6), (4, 6), (5, 7)]
 >>> cost
-0.5
+0.63
 >>> mapping_1
-[[0, 1], [2, 3, 4], [5], [6], [7]]
+[[0, 1], [2, 3, 4], [5], [6], [6], [7]]
 >>> mapping_2
-[[0], [0], [1], [1], [1], [2], [3], [4]]
+[[0], [0], [1], [1], [1], [2], [3, 4], [5]]
 >>> matrix
-array([[ 0. ,  0. ,  1. ,  2. ,  3.5,  5.5,  6.5,  6.5],
-       [ 1. ,  1. ,  0. ,  0. ,  0.5,  1.5,  1.5,  2.5],
-       [ 3. ,  3. ,  1. ,  1. ,  0.5,  0.5,  1.5,  3.5],
-       [ 4. ,  4. ,  1. ,  1. ,  1. ,  1.5,  0.5,  1.5],
-       [ 4. ,  4. ,  2. ,  2. ,  2.5,  3. ,  1.5,  0.5]])
+array([[ 0.  ,  0.  ,  1.  ,  2.  ,  3.5 ,  5.5 ,  6.5 ,  6.5 ],
+       [ 1.  ,  1.  ,  0.  ,  0.  ,  0.5 ,  1.5 ,  1.5 ,  2.5 ],
+       [ 3.  ,  3.  ,  1.  ,  1.  ,  0.5 ,  0.5 ,  1.5 ,  3.5 ],
+       [ 4.  ,  4.  ,  1.  ,  1.  ,  1.  ,  1.5 ,  0.5 ,  1.5 ],
+       [ 5.13,  5.13,  1.13,  1.13,  1.37,  1.87,  0.63,  1.63],
+       [ 5.13,  5.13,  2.13,  2.13,  2.63,  3.37,  1.63,  0.63]])
 ```
 
 Here is the visualization of the above example. In blue and orange are the value serieses. In black are the optimal connections computed by the DTW algorithm:
@@ -39,7 +40,7 @@ Here is the visualization of the above example. In blue and orange are the value
 
 ![DTW Visualization](/dtw_vis.png)
 
-If for each pair of matched indices, we sum the absolute differences of their values, we get the cost of the whole match, which is identical to the value in the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which makes a cost of **|2.5 - 2| = 0.5**. Hence, the total cost of this example is **0.5**, as also seen in the **(n,m)** index in the matrix.
+If for each pair of matched indices, we sum the absolute differences of their values, we get the cost of the whole match, which is identical to the value in the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which makes a cost of **|2.5 - 2| = 0.5** and except for match **(4,6)**, which makes a cost of **|2 - 2.13| = 0.13**. Hence, the total cost of this example is **0.5 + 0.13 = 0.63**, as also seen in the **(n,m)** index in the matrix.
 
 
 * Although not shown in the example, the values of **series_1** and **series_2** can also be vectors of any dimension
