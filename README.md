@@ -44,7 +44,8 @@ If for each pair of matched indices, we sum the absolute differences of their va
 
 
 The below table also refers to the above example. At each index **(i,j)**, it shows the cost of the optimal warping of the prefix of **series 1** up to index **i** and the prefix of **series 2** up to index **j**. Thus, at the **(n,m)** index is the final cost of the whole warping. The gray cells denote the path of the final optimal matches, which is retrieved by starting from index **(n,m)** and choosing the cheapest neighboring cost.
-[!DTW Table](/dtw_vis_table.png)
+
+![DTW Table](/dtw_vis_table.png)
 
 * Although not shown in the example, the values of **series_1** and **series_2** can also be vectors of any dimension
 
