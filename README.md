@@ -52,19 +52,21 @@ The below matrix also refers to the above example. At each index **(i,j)**, it s
 ## Inputs and outputs
 The function **simpledtw.dtw()** gets 2 mandatory parameters and 1 optional parameter:
 
-* ***series_1*** - **MANDATORY** - an iterable object of numbers **or vectors**
-* ***series_2*** - **MANDATORY** - an iterable object of numbers **or vectors**
-* ***norm_func*** - **OPTIONAL** - a function that computes vector norm or real number absolute value (default is **numpy.linalg.norm**).
+| Parameter | Mandatory / Optional | Description |
+| series_1 | Mandatory | an iterable object of numbers **or vectors** |
+| series_2 | Mandatory | an iterable object of numbers **or vectors** |
+| norm_func | Optional | a function that computes vector norm or real number absolute value (default is `numpy.linalg.norm`) |
 
-NOTE: ***series_1*** and ***series_2*** must support Python's ***len()*** function. Thus, iterable objects such as lists, tuples and Numpy arrays will work, while **generators will not**.
+NOTE: `series_1` and `series_2` must support Python's `len()` function. Thus, iterable objects such as lists, tuples and Numpy arrays will work, while **generators will not**.
 
 
-The function **simpledtw.dtw()** returns 5 outputs:
-* ***matches*** - A list of tuples, where each tuple's first member is an index from **series_1** and the second member is an index from **series_2**
-* ***cost*** - The cost of the warping, which is the value at the ***(n,m)*** cell of the Dynamic Programming 2D array
-* ***mapping_1*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_2**, to which index ***i*** in **series_1** has been matched
-* ***mapping_2*** - A list that contains at each index ***i***, the list of indices ***j*** in **series_1**, to which index ***i*** in **series_2** has been matched
-* ***matrix*** - The Dynamic Programming **(nxm)** Numpy matrix, where **n** is the length of **series_1** and **m** is the length of **series_2**, which can be used in order to visualize the computations and the selected path
+The function `simpledtw.dtw()` returns 5 outputs:
+| Output | Description |
+| matches | a list of tuples, where each tuple's first member is an index from `series_1` and the second member is an index from `series_2` |
+| cost | the cost of the warping, which is the value at the `(n,m)` cell of the Dynamic Programming 2D array |
+| mapping_1 | a list that contains at each index `i`, the list of indices `j` in `series_2`, to which index `i` in `series_1` has been matched |
+| mapping_2 | a list that contains at each index `i`, the list of indices `j` in `series_1`, to which index `i` in `series_2` has been matched |
+| matrix | the Dynamic Programming `(nxm)` Numpy matrix, where `n` is the length of `series_1` and `m` is the length of `series_2`, which can be used in order to visualize the computations and the selected path |
 
 ## Using Different Norm Functions
 In order to use norms that are different from **L2 distance**, which is the default behavior of  **numpy.linalg.norm**, you could use a lambda expression, for example, for L1 distance you could use:
