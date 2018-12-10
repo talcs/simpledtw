@@ -53,6 +53,7 @@ The below matrix also refers to the above example. At each index **(i,j)**, it s
 The function **simpledtw.dtw()** gets 2 mandatory parameters and 1 optional parameter:
 
 | Parameter | Mandatory / Optional | Description |
+|:---------:|:--------------------:|:-----------:|
 | series_1 | Mandatory | an iterable object of numbers **or vectors** |
 | series_2 | Mandatory | an iterable object of numbers **or vectors** |
 | norm_func | Optional | a function that computes vector norm or real number absolute value (default is `numpy.linalg.norm`) |
@@ -62,6 +63,7 @@ NOTE: `series_1` and `series_2` must support Python's `len()` function. Thus, it
 
 The function `simpledtw.dtw()` returns 5 outputs:
 | Output | Description |
+|:------:|:-----------:|
 | matches | a list of tuples, where each tuple's first member is an index from `series_1` and the second member is an index from `series_2` |
 | cost | the cost of the warping, which is the value at the `(n,m)` cell of the Dynamic Programming 2D array |
 | mapping_1 | a list that contains at each index `i`, the list of indices `j` in `series_2`, to which index `i` in `series_1` has been matched |
