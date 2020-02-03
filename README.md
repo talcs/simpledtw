@@ -40,10 +40,10 @@ Here is the visualization of the above example. In blue and orange are the value
 
 ![DTW Visualization](/dtw_vis.png)
 
-If for each pair of matched indices, we sum the absolute differences of their values, we get the cost of the whole match, which is identical to the value at the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which makes a cost of **|2.42 - 2| = 0.42** and except for match **(4,6)**, which makes a cost of **|2 - 2.13| = 0.13**. Hence, the total cost of this example is **0.42 + 0.13 = 0.55**, as also seen at the **(n,m)** index in the matrix.
+If for each pair of matched indices, we will sum the absolute differences of their values, we will get the cost of the whole match, which will be identical to the value at the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which adds a cost of **|2.42 - 2| = 0.42** and except for match **(4,6)**, which adds a cost of **|2 - 2.13| = 0.13**. Therefore, the total warping cost in this example is **0.42 + 0.13 = 0.55**, as can also be indicated from the **(n,m)** index in the matrix.
 
 
-The below matrix also refers to the above example. At each index **(i,j)**, it shows the cost of the optimal warping of the prefix of **series 1** up to index **i** and the prefix of **series 2** up to index **j**. Thus, at the **(n,m)** index is the final cost of the whole warping. The gray cells denote the path of the final optimal matches, which is retrieved by starting from index **(n,m)** and recursively choosing the cheapest neighboring cost.
+The below matrix refers to the above example. At each index **(i,j)**, it shows the cost of the optimal warping up to that point, i.e., the cost of warping the prefix of **series 1** up to index **i** and the prefix of **series 2** up to index **j**. Thus, the **(n,m)** index contains the final cost of the whole warping. The gray cells denote the path of the final optimal matches, which has been retrieved by starting from index **(n,m)** and recursively choosing the cheapest neighboring cost, going up, left or both.
 
 ![DTW Matrix](/dtw_vis_table.png)
 
