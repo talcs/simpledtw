@@ -1,17 +1,17 @@
 # simpledtw
 
-**simpledtw** is a Python Dynamic Programming implementation using NumPy, of the classic Dynamic Time Warping algorithm. The library enables computing DTW on sequences of scalars or on sequences of vectors.
+**simpledtw** is a Python Dynamic Programming implementation of the classic Dynamic Time Warping algorithm. The library enables computing DTW on sequences of scalars or vectors. It uses NumPy in its backend.
 
 ## Installation
-The package **simpledtw** is currenetly not registered in PyPi.
-The current way of installing the package is by copying the file **simpledtw.py** into your Python libs directory or into your project directory
+The package **simpledtw** has not been registered in PyPI so far.
+In order to install the package, copy the file **simpledtw.py** to your Python libs directory or to your project directory.
 
 ## Dependencies
-The only dependency of **simpledtw** is **NumPy**
+The only dependency of **simpledtw** is **NumPy**.
 
 
 ## Usage example
-The following code shows using DTW on the two serieses **series_1** and **series_2**:
+The following code demonstrates the usage of **simpledtw** to compute DTW on two series of scalars, **series_1** and **series_2**:
 
 ```
 >>> import simpledtw
@@ -35,15 +35,15 @@ array([[ 0.  ,  0.  ,  1.  ,  2.  ,  3.42,  5.42,  6.42,  6.42],
        [ 5.13,  5.13,  2.13,  2.13,  2.55,  3.29,  1.55,  0.55]])
 ```
 
-Here is the visualization of the above example. In blue and orange are the value serieses. In black are the optimal connections computed by the DTW algorithm:
+Below is the visualization of the above example. In blue and orange are the two value series. In black are the optimal connections computed by the DTW algorithm:
 
 
 ![DTW Visualization](/dtw_vis.png)
 
-If for each pair of matched indices, we will sum the absolute differences of their values, we will get the cost of the whole match, which will be identical to the value at the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which adds a cost of **|2.42 - 2| = 0.42** and except for match **(4,6)**, which adds a cost of **|2 - 2.13| = 0.13**. Therefore, the total warping cost in this example is **0.42 + 0.13 = 0.55**, as can also be indicated from the **(n,m)** index in the matrix.
+If we sum the absolute differences for each pair of matched indices, we will get the cost of the whole match, which will be identical to the value at the **(n,m)** index in the matrix. In our example, we can see that all of those differences are 0, except for the match **(1,4)**, which costs **|2.42 - 2| = 0.42** and match **(4,6)**, which costs **|2 - 2.13| = 0.13**. Therefore, the total warping cost in this example is **0.42 + 0.13 = 0.55**, as can also be indicated from the **(n,m)** index in the matrix.
 
 
-The below matrix refers to the above example. At each index **(i,j)**, it shows the cost of the optimal warping up to that point, i.e., the cost of warping the prefix of **series 1** up to index **i** and the prefix of **series 2** up to index **j**. Thus, the **(n,m)** index contains the final cost of the whole warping. The gray cells denote the path of the final optimal matches, which has been retrieved by starting from index **(n,m)** and recursively choosing the cheapest neighboring cost, going up, left or both.
+The below matrix refers to the above example. At each index **(i,j)**, it shows the cost of the optimal warping up to that point, i.e., the cost of warping the prefix of **series_1** up to index **i** and the prefix of **series_2** up to index **j**. Thus, the **(n,m)** index contains the final cost of the whole warping. The gray cells denote the path of the final optimal matches, which has been retrieved by starting from index **(n,m)** and recursively choosing the cheapest neighboring cost, going up, left or both.
 
 ![DTW Matrix](/dtw_vis_table.png)
 
